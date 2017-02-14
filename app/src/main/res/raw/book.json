@@ -1,0 +1,49 @@
+{
+  "books": [
+    {
+      "cdate": "2016-11-08",
+      "info": "PHP",
+	  "amount": 120
+    },
+    {
+      "cdate": "2016-11-08",
+      "info": "JavaScript",
+	  "amount": 80
+    },
+	{
+      "cdate": "2016-11-09",
+      "info": "C++",
+	  "amount": 40
+    },
+	{
+      "cdate": "2016-11-10",
+      "info": "SQL",
+	  "amount": 35
+    },
+	{
+      "cdate": "2016-11-11",
+      "info": "Linux",
+	  "amount": 1100
+    },
+	{
+      "cdate": "2016-11-13",
+      "info": "MySQL",
+	  "amount": 115
+    },
+	{
+      "cdate": "2016-11-13",
+      "info": "C",
+	  "amount": 1120
+    },
+	{
+      "cdate": "2016-11-14",
+      "info": "C#",
+	  "amount": 75
+    },
+	{
+      "cdate": "2016-11-14",
+      "info": "Ubuntu",
+	  "amount": 55
+    }
+  ]
+}
