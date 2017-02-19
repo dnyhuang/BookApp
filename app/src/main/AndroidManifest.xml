@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- contentProvider -->
+        <provider
+             android:name=".data.BookProvider"
+             android:authorities="main.bookapp"
+             android:exported="false" />
     </application>
 
 </manifest>

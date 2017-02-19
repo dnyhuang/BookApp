@@ -1,7 +1,9 @@
 package main.bookapp;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +17,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import main.bookapp.data.BookHelper;
+import main.bookapp.data.DatabaseContract;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
         //
         ListView listview = (ListView) findViewById(R.id.listview);
-        cursor = helper.getReadableDatabase().query("books", null, null, null, null, null, null);
+//        cursor = helper.getReadableDatabase().query("books", null, null, null, null, null, null); //舊方法
+
+        // Content Provider - Query all data
+//        cursor = getContentResolver().query(DatabaseContract.CONTENT_URI,null,null,null,null,null); //新方法 利用CONTENT_URI
+        // Content Provider - Query single data
+        Uri singleUri = ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, 2);
+        Cursor cursor = getContentResolver().query(singleUri, null, null, null, null, null);
+
+
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_expandable_list_item_2,
                 cursor,
@@ -54,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         ,0);
         listview.setAdapter(adapter);
 
-
+        //
+        Log.i("","");
 
     }
 

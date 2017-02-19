@@ -25,9 +25,7 @@ public class BookHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "books.db";
     private static final int DB_VERSION = 1;
-    private static final String CDATE = "cdate";
-    private static final String INFO = "info";
-    private static final String AMOUNT = "amount";
+
     private final Context context;
 
     public BookHelper(Context context){
@@ -49,8 +47,10 @@ public class BookHelper extends SQLiteOpenHelper {
         "info VARCHAR ," +
         "amount INTEGER)");
 
+        InsertDataToDB(sqLiteDatabase);
+    }
 
-
+    private void InsertDataToDB(SQLiteDatabase sqLiteDatabase) {
         InputStream is = context.getResources().openRawResource(R.raw.book);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
@@ -68,14 +68,14 @@ public class BookHelper extends SQLiteOpenHelper {
 
             for (int i = 0; i < books.length(); i++) {
                 JSONObject innerObj = books.getJSONObject(i);
-                String cdate = innerObj.getString(CDATE);
-                String info = innerObj.getString(INFO);
-                int amount = innerObj.getInt(AMOUNT);
+                String cdate = innerObj.getString(DatabaseContract.BooksColumns.CDATE);
+                String info = innerObj.getString(DatabaseContract.BooksColumns.INFO);
+                int amount = innerObj.getInt(DatabaseContract.BooksColumns.AMOUNT);
 
                 ContentValues val = new ContentValues(3);
-                val.put(CDATE,cdate);
-                val.put(INFO,info);
-                val.put(AMOUNT,amount);
+                val.put(DatabaseContract.BooksColumns.CDATE,cdate);
+                val.put(DatabaseContract.BooksColumns.INFO,info);
+                val.put(DatabaseContract.BooksColumns.AMOUNT,amount);
 
                 long id = sqLiteDatabase.insert("books",null,val);
 
